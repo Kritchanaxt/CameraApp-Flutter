@@ -1,4 +1,3 @@
-# Flutter-CameraApp
+# CameraApp-Flutter
 
-### Demo
 
