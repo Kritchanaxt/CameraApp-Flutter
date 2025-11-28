@@ -1,6 +1,6 @@
 # 📷 CameraApp-Flutter
 
-แอปพลิเคชันกล้องถ่ายรูปที่สร้างด้วย Flutter รองรับการถ่ายรูปจากกล้อง, เลือกรูปจากแกลเลอรี่ และ Crop รูปภาพได้
+A camera application built with Flutter that supports capturing photos from camera, picking images from gallery, and cropping images.
 
 ---
 
@@ -16,11 +16,11 @@
 
 ## ✨ Features
 
-- 📷 **ถ่ายรูปจากกล้อง** - ใช้กล้องของอุปกรณ์ถ่ายรูป
-- 🖼️ **เลือกรูปจากแกลเลอรี่** - เลือกรูปภาพจากคลังรูปภาพ
-- ✂️ **Crop รูปภาพ** - ตัดรูปภาพตามอัตราส่วนที่ต้องการ
-- 🔍 **Zoom รูปภาพ** - ขยายดูรูปภาพด้วย Interactive Viewer
-- 🔐 **จัดการ Permissions** - ขอสิทธิ์การใช้งานกล้องและแกลเลอรี่อัตโนมัติ
+- 📷 **Capture from Camera** - Take photos using device camera
+- 🖼️ **Pick from Gallery** - Select images from photo library
+- ✂️ **Image Cropping** - Crop images with custom aspect ratio
+- 🔍 **Zoom Image** - Zoom and pan images with Interactive Viewer
+- 🔐 **Permission Handling** - Automatic camera and gallery permission requests
 
 ---
 
@@ -28,11 +28,11 @@
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| [image_picker](https://pub.dev/packages/image_picker) | ^0.8.4+4 | เลือกรูปจากกล้องหรือแกลเลอรี่ |
-| [image_cropper](https://pub.dev/packages/image_cropper) | ^9.0.0 | Crop รูปภาพ |
-| [camera](https://pub.dev/packages/camera) | ^0.11.1 | ควบคุมกล้องแบบ native |
-| [path_provider](https://pub.dev/packages/path_provider) | ^2.1.2 | จัดการ path ของไฟล์ |
-| [permission_handler](https://pub.dev/packages/permission_handler) | ^11.0.1 | จัดการ permissions |
+| [image_picker](https://pub.dev/packages/image_picker) | ^0.8.4+4 | Pick images from camera or gallery |
+| [image_cropper](https://pub.dev/packages/image_cropper) | ^9.0.0 | Crop images |
+| [camera](https://pub.dev/packages/camera) | ^0.11.1 | Native camera control |
+| [path_provider](https://pub.dev/packages/path_provider) | ^2.1.2 | File path management |
+| [permission_handler](https://pub.dev/packages/permission_handler) | ^11.0.1 | Permission handling |
 
 **Flutter SDK:** ^3.7.0
 
@@ -43,19 +43,19 @@
 ```
 flutter_cameraApp/
 ├── lib/
-│   ├── main.dart                 # Entry point ของแอป
+│   ├── main.dart                 # App entry point
 │   └── demo1/
-│       ├── main_page.dart        # หน้าหลักสำหรับเลือกรูปหรือถ่ายรูป
-│       └── cropped_image.dart    # หน้าแสดงรูปที่ crop แล้ว
+│       ├── main_page.dart        # Main page for picking or capturing images
+│       └── cropped_image.dart    # Page to display cropped image
 ├── android/
 │   └── app/src/main/
-│       └── AndroidManifest.xml   # ตั้งค่า permissions สำหรับ Android
+│       └── AndroidManifest.xml   # Android permissions configuration
 ├── ios/
 │   └── Runner/
-│       └── Info.plist            # ตั้งค่า permissions สำหรับ iOS
+│       └── Info.plist            # iOS permissions configuration
 ├── test/
 │   └── widget_test.dart          # Widget tests
-└── pubspec.yaml                  # Dependencies และ project config
+└── pubspec.yaml                  # Dependencies and project config
 ```
 
 ---
@@ -65,8 +65,8 @@ flutter_cameraApp/
 ### Prerequisites
 
 - [Flutter SDK](https://docs.flutter.dev/get-started/install) (>= 3.7.0)
-- [Android Studio](https://developer.android.com/studio) หรือ [Xcode](https://developer.apple.com/xcode/) (สำหรับ iOS)
-- อุปกรณ์จริงหรือ Emulator/Simulator
+- [Android Studio](https://developer.android.com/studio) or [Xcode](https://developer.apple.com/xcode/) (for iOS)
+- Physical device or Emulator/Simulator
 
 ### Step-by-step Setup
 
@@ -77,19 +77,19 @@ git clone https://github.com/Kritchanaxt/CameraApp-Flutter.git
 cd CameraApp-Flutter/flutter_cameraApp
 ```
 
-#### 2. ติดตั้ง Dependencies
+#### 2. Install Dependencies
 
 ```bash
 flutter pub get
 ```
 
-#### 3. ตรวจสอบสถานะ Flutter
+#### 3. Check Flutter Status
 
 ```bash
 flutter doctor
 ```
 
-ตรวจสอบให้แน่ใจว่าทุกอย่างพร้อมใช้งาน (มีเครื่องหมาย ✓)
+Make sure everything is ready (all items have ✓ checkmarks)
 
 ---
 
@@ -97,7 +97,7 @@ flutter doctor
 
 ### Android Setup
 
-Permissions ได้ถูกตั้งค่าไว้แล้วใน `android/app/src/main/AndroidManifest.xml`:
+Permissions are already configured in `android/app/src/main/AndroidManifest.xml`:
 
 ```xml
 <uses-permission android:name="android.permission.CAMERA"/>
@@ -107,7 +107,7 @@ Permissions ได้ถูกตั้งค่าไว้แล้วใน `
 
 ### iOS Setup
 
-Permissions ได้ถูกตั้งค่าไว้แล้วใน `ios/Runner/Info.plist`:
+Permissions are already configured in `ios/Runner/Info.plist`:
 
 ```xml
 <key>NSPhotoLibraryUsageDescription</key>
@@ -120,7 +120,7 @@ Permissions ได้ถูกตั้งค่าไว้แล้วใน `
 <string>We need access to the microphone to record audio.</string>
 ```
 
-สำหรับ iOS ต้องติดตั้ง CocoaPods ด้วย:
+For iOS, you also need to install CocoaPods:
 
 ```bash
 cd ios
@@ -135,24 +135,24 @@ cd ..
 ### Android
 
 ```bash
-# เชื่อมต่ออุปกรณ์ Android หรือเปิด Emulator
+# Connect Android device or start Emulator
 flutter run
 ```
 
 ### iOS
 
 ```bash
-# เปิด Simulator หรือเชื่อมต่อ iPhone
+# Start Simulator or connect iPhone
 flutter run
 ```
 
-### เลือกอุปกรณ์เฉพาะ
+### Select Specific Device
 
 ```bash
-# ดูรายการอุปกรณ์ที่เชื่อมต่อ
+# List connected devices
 flutter devices
 
-# รันบนอุปกรณ์เฉพาะ
+# Run on specific device
 flutter run -d <device_id>
 ```
 
@@ -194,7 +194,7 @@ flutter test test/widget_test.dart
 flutter test --coverage
 ```
 
-### ตัวอย่าง Widget Test
+### Widget Test Example
 
 ```dart
 import 'package:flutter/material.dart';
@@ -205,13 +205,13 @@ void main() {
   testWidgets('App should render MyApp widget', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
     
-    // ตรวจสอบว่า AppBar มี title "Camera App"
+    // Verify AppBar has title "Camera App"
     expect(find.text('Camera App'), findsOneWidget);
     
-    // ตรวจสอบว่ามีปุ่ม Pick Gallery
+    // Verify Pick Gallery button exists
     expect(find.text('Pick Gallery'), findsOneWidget);
     
-    // ตรวจสอบว่ามีปุ่ม Capture Camera
+    // Verify Capture Camera button exists
     expect(find.text('Capture Camera'), findsOneWidget);
   });
 }
@@ -221,50 +221,50 @@ void main() {
 
 ## 📖 Usage Guide
 
-### 1. เลือกรูปจากแกลเลอรี่
+### 1. Pick Image from Gallery
 
-1. เปิดแอป
-2. กดปุ่ม **"Pick Gallery"** (สีฟ้า)
-3. เลือกรูปภาพจากแกลเลอรี่
-4. Crop รูปภาพตามต้องการ
-5. ดูรูปที่ crop แล้ว
+1. Open the app
+2. Tap **"Pick Gallery"** button (blue)
+3. Select an image from gallery
+4. Crop the image as desired
+5. View the cropped image
 
-### 2. ถ่ายรูปจากกล้อง
+### 2. Capture from Camera
 
-1. เปิดแอป
-2. กดปุ่ม **"Capture Camera"** (สีม่วง)
-3. อนุญาตการใช้งานกล้อง (ถ้าถูกถาม)
-4. ถ่ายรูป
-5. Crop รูปภาพตามต้องการ
-6. ดูรูปที่ crop แล้ว
+1. Open the app
+2. Tap **"Capture Camera"** button (purple)
+3. Grant camera permission (if prompted)
+4. Take a photo
+5. Crop the image as desired
+6. View the cropped image
 
-### 3. Crop รูปภาพ
+### 3. Crop Image
 
-- ลากเพื่อย้ายกรอบ crop
-- ลาก corner เพื่อปรับขนาด
-- ใช้ slider ปรับ rotation
-- กด ✓ เพื่อยืนยัน หรือ ✕ เพื่อยกเลิก
+- Drag to move the crop frame
+- Drag corners to resize
+- Use slider to adjust rotation
+- Tap ✓ to confirm or ✕ to cancel
 
 ---
 
 ## 🔧 Troubleshooting
 
-### ปัญหาที่พบบ่อย
+### Common Issues
 
 #### 1. Permission Denied
 
 ```
-❌ แอปไม่สามารถใช้กล้องหรือแกลเลอรี่ได้
+❌ App cannot access camera or gallery
 ```
 
-**วิธีแก้:**
-- ไปที่ Settings > Apps > Camera App > Permissions
-- เปิดใช้งาน Camera และ Storage permissions
+**Solution:**
+- Go to Settings > Apps > Camera App > Permissions
+- Enable Camera and Storage permissions
 
 #### 2. Gradle Build Failed (Android)
 
 ```bash
-# ลองล้าง cache แล้ว build ใหม่
+# Try clearing cache and rebuild
 flutter clean
 flutter pub get
 flutter run
@@ -284,7 +284,7 @@ flutter run
 
 ```bash
 flutter doctor -v
-# ทำตามคำแนะนำที่แสดง
+# Follow the instructions shown
 ```
 
 ---
@@ -313,4 +313,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-⭐ หากโปรเจคนี้มีประโยชน์ อย่าลืมกด Star ให้ด้วยนะครับ!
+⭐ If you find this project useful, don't forget to give it a Star!
